@@ -24,6 +24,12 @@
 const {intersperse, constant} = require('./utils');
 
 const hide = (strings, ...values) =>
-  intersperse(strings, values.map(constant('xxx'))).join('');
+  intersperse
+    ( strings
+    , values.map
+        ( constant('xxx')
+        )
+    )
+    .join('');
 
 module.exports = hide;
