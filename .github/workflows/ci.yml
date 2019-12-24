@@ -1,0 +1,35 @@
+name: CI
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+      - name: Run tests
+        run: |
+          docker build -t $GITHUB_REPOSITORY:$GITHUB_SHA .
+          docker run -e NODE_AUTH_TOKEN --rm --mount type=bind,src=$GITHUB_WORKSPACE,dst=/workspaces/tagtical $GITHUB_REPOSITORY:$GITHUB_SHA sh -c 'yarn && yarn test'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+  publish:
+    name: Publish Package
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org
+          scope: "@customcommander"
+      - run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,0 +1,7 @@
+{
+  "name": "tagtical",
+  "dockerFile": "Dockerfile",
+  "postCreateCommand": [
+    "yarn"
+  ]
+}
