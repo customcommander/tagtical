@@ -13,6 +13,7 @@
     "test": "tape src/*.test.js"
   },
   "devDependencies": {
+    "semantic-release": "^15.14.0",
     "tape": "^4.12.0"
   }
 }
