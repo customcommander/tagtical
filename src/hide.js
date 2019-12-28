@@ -32,4 +32,14 @@ const hide = (strings, ...values) =>
     )
     .join('');
 
+/**
+ * Hides interpolated values
+ *
+ * The `hide` tag replaces all interpolated values with 'xxx':
+ *
+ * ```javascript
+ * hide`Hi ${name}, you credit card number is ${cc_num}`
+ * //=> "Hi xxx, you credit card number is xxx"
+ * ```
+ */
 module.exports = hide;

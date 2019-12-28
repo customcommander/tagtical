@@ -4,15 +4,19 @@
   "main": "index.js",
   "files": [
     "src/",
-    "!src/*.test.js"
+    "!src/*.test.js",
+    "!src/doc"
   ],
   "repository": "https://github.com/customcommander/tagtical.git",
   "author": "customcommander <hello@spinjs.com>",
   "license": "MIT",
   "scripts": {
-    "test": "tape src/*.test.js"
+    "test": "tape src/*.test.js",
+    "doc": "make README.md"
   },
   "devDependencies": {
+    "jsdoc": "^3.6.3",
+    "mustache": "^3.2.0",
     "semantic-release": "^15.14.0",
     "tape": "^4.12.0"
   }
