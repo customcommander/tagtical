@@ -5,7 +5,7 @@ function get_tags() {
 const get_tag_documentation = record => (
   { tag: record.meta.filename.split('.')[0]
   , blurb: record.description.split('\n')[0]
-  , description: record.description
+  , description: record.description.split('\n').slice(1).join('\n')
   }
 );
 
