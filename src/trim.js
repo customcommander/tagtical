@@ -22,18 +22,22 @@
  */
 
 /**
- * Hides interpolated values
+ * Trim interpolated values
  *
- * The `hide` tag replaces all interpolated values with 'xxx':
+ * Trim all interpolated values if they are strings.
+ * Non-string values are left as is.
  *
  * ```javascript
- * hide`Hi ${name}, you credit card number is ${cc_num}`
- * //=> "Hi xxx, you credit card number is xxx"
+ * const name = '   John    ';
+ * trim`My name is ${name}!`;
+ * //=> "My name is John!"
  * ```
  */
 module.exports =
   (l, x, r) =>
     [ l
-    , 'xxx'
+    , typeof x === 'string'
+        ? x.trim()
+        : x
     , r
-    ];
+    ]

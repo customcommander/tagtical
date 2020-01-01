@@ -1,5 +1,5 @@
 const test = require('tape');
-const sut = require('./hide');
+const { hide } = require('../');
 
 test('hide: hides all values', t => {
   t.plan(1);
@@ -7,5 +7,8 @@ test('hide: hides all values', t => {
   const foo = 'foo';
   const bar = 'bar';
 
-  t.is( sut`foo=${foo}, bar=${bar}`, "foo=xxx, bar=xxx");
+  t.is
+    ( hide`foo=${foo}, bar=${bar}`
+    , "foo=xxx, bar=xxx"
+    );
 });

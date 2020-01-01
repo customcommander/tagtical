@@ -1,16 +1,40 @@
 ## API
 
-* <a name="#hide"></a>hide - _Hides interpolated values_
+* <a name="hide">hide</a> - _Hides interpolated values_
+* <a name="trim">trim</a> - _Trim interpolated values_
+* <a name="upper">upper</a> - _Uppercase interpolated values_
 
-### hide
+### <a name="#hide"></a>hide
 
-Hides interpolated values
 
 The `hide` tag replaces all interpolated values with 'xxx':
 
 ```javascript
 hide`Hi ${name}, you credit card number is ${cc_num}`
 //=> "Hi xxx, you credit card number is xxx"
+```
+### <a name="#trim"></a>trim
+
+
+Trim all interpolated values if they are strings.
+Non-string values are left as is.
+
+```javascript
+const name = '   John    ';
+trim`My name is ${name}!`;
+//=> "My name is John!"
+```
+### <a name="#upper"></a>upper
+
+
+Uppercase all interpolated values if they are strings.
+Non-string values are left as is.
+
+```javascript
+const name = 'john';
+const age = 40;
+upper`My name is ${name} and I am ${age} years old`
+//=> "My name is JOHN and I am 40 years old"
 ```
 
 ## Contributing
