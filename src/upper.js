@@ -22,18 +22,23 @@
  */
 
 /**
- * Hides interpolated values
+ * Uppercase interpolated values
  *
- * The `hide` tag replaces all interpolated values with 'xxx':
+ * Uppercase all interpolated values if they are strings.
+ * Non-string values are left as is.
  *
  * ```javascript
- * hide`Hi ${name}, you credit card number is ${cc_num}`
- * //=> "Hi xxx, you credit card number is xxx"
+ * const name = 'john';
+ * const age = 40;
+ * upper`My name is ${name} and I am ${age} years old`
+ * //=> "My name is JOHN and I am 40 years old"
  * ```
  */
 module.exports =
   (l, x, r) =>
     [ l
-    , 'xxx'
+    , typeof x === 'string'
+        ? x.toUpperCase()
+        : x
     , r
     ];

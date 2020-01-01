@@ -11,7 +11,7 @@
   "author": "customcommander <hello@spinjs.com>",
   "license": "MIT",
   "scripts": {
-    "test": "tape src/*.test.js",
+    "test": "tape index.test.js src/*.test.js",
     "doc": "make README.md"
   },
   "devDependencies": {

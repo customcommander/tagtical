@@ -22,14 +22,6 @@
  */
 
 const intersperse = (a, b) =>
-  a.flatMap
-    ( (x, i) =>
-        [].concat
-          ( x
-          , i < b.length
-              ? b[i]
-              : []
-          )
-    );
+  a.flatMap((x, i) => [x, b[i]]).slice(0, -1);
 
 module.exports = intersperse;
