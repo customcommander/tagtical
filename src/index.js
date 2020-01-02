@@ -3,6 +3,7 @@ const join = require('./utils/join');
 const intersperse = require('./utils/intersperse');
 const compose = require('./utils/compose');
 const hide = require('./hide');
+const lower = require('./lower');
 const pluralize = require('./pluralize');
 const trim = require('./trim');
 const upper = require('./upper');
@@ -13,6 +14,7 @@ const tag = (...fns) =>
       (intersperse(strs, vals));
 
 tag.hide = tag_function(hide);
+tag.lower = tag_function(lower);
 tag.pluralize = tag_function(pluralize);
 tag.trim = tag_function(trim);
 tag.upper = tag_function(upper);
