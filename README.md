@@ -1,11 +1,45 @@
 ## API
 
+* <a name="defaults">defaults</a> - _Replace an empty value with a default value_
 * <a name="hide">hide</a> - _Hides interpolated values_
 * <a name="lower">lower</a> - _Lowercase interpolated values_
 * <a name="pluralize">pluralize</a> - _Choose between singular or plural forms._
 * <a name="trim">trim</a> - _Trim interpolated values_
 * <a name="upper">upper</a> - _Uppercase interpolated values_
 
+### <a name="#defaults"></a>defaults
+
+
+The default value for an empty interpolated value is defined in the string template itself.<br>
+It is separated by a single `/` character. e.g. `${name}/guest`.
+
+A value is considered empty if it is:
+
+- `null`
+- `undefined`
+- An empty string `''`
+- An empty array `[]`
+- An empty object `{}`
+
+When the default value is used, the separator (i.e. the `/` character)
+is removed from the string.
+
+When the interpolated value is not empty, the default value (and the separator)
+is removed from the string.
+
+```javascript
+import {defaults} from '@customcommander/tagtical';
+
+var username = '';
+var num;
+defaults`Hi ${username}/guest, you have ${num}/no new emails`;
+//=> "Hi guest, you have no new emails"
+
+var username = 'John';
+var num = 10;
+defaults`Hi ${username}/guest, you have ${num}/no new emails`;
+//=> "Hi John, you have 10 new emails"
+```
 ### <a name="#hide"></a>hide
 
 
