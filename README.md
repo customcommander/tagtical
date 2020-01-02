@@ -1,6 +1,7 @@
 ## API
 
 * <a name="hide">hide</a> - _Hides interpolated values_
+* <a name="pluralize">pluralize</a> - _Choose between singular or plural forms._
 * <a name="trim">trim</a> - _Trim interpolated values_
 * <a name="upper">upper</a> - _Uppercase interpolated values_
 
@@ -13,6 +14,51 @@ The `hide` tag replaces all interpolated values with 'xxx':
 hide`Hi ${name}, you credit card number is ${cc_num}`
 //=> "Hi xxx, you credit card number is xxx"
 ```
+### <a name="#pluralize"></a>pluralize
+
+
+The `pluralize` tag allows you to build the "template" of a sentence without having
+to deal with the logic of choosing between singular or plural forms.
+
+e.g. given `"There is/are ${n} fox(es) and ${m} wolf/wolves"`
+
+The `pluralize` tag scans the string from left to right and picks forms depending
+on the value of the nearest interpolated value.
+
+Forms are separated by a `/` character with the singular form first
+and the plural form last. e.g. `is/are`.
+
+When both forms share the same root e.g. `fox/foxes`
+an abbreviated notation can also be used: `fox(es)`.
+
+```javascript
+import {pluralize} from '@customcommander/tagtical';
+
+let num;
+
+num = 10;
+pluralize`There is/are ${num} fox(es)`
+//=> "There are 10 foxes"
+
+num = 0;
+pluralize`There is/are ${num} fox(es)`
+//=> "There are 0 foxes"
+
+num = 1;
+pluralize`There is/are ${num} fox(es)`
+//=> "There is 1 fox"
+
+// or
+
+num = 1;
+pluralize`There is/are ${num} fox/foxes`
+//=> "There is 1 fox"
+```
+
+⚠️ If an interpolated value isn't an integer >= 0
+the `pluralize` tag __won't__ perform any replacement on the adjacent text!
+
+📢 A `0` will pick the __plural__ form(s).
 ### <a name="#trim"></a>trim
 
 
