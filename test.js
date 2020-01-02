@@ -2,6 +2,7 @@ const test = require('tape');
 const tag = require('./dist');
 const
   { hide
+  , lower
   , pluralize
   , trim
   , upper
@@ -102,5 +103,20 @@ test('upper: uppercase all values', t => {
   t.is
     ( upper`foo=${foo}, bar=${bar}`
     , "foo=FOO, bar=BAR"
+    );
+});
+
+test('lower: lowercase all values', t => {
+  t.plan(1);
+
+  const food =
+    [ 'BREAD'
+    , 'BEANS'
+    , 'COVFEFE'
+    ];
+
+  t.is
+    ( lower`I had ${food[0]}, ${food[1]} and ${food[2]} for breakfast`
+    , 'I had bread, beans and covfefe for breakfast'
     );
 });

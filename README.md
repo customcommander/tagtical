@@ -1,6 +1,7 @@
 ## API
 
 * <a name="hide">hide</a> - _Hides interpolated values_
+* <a name="lower">lower</a> - _Lowercase interpolated values_
 * <a name="pluralize">pluralize</a> - _Choose between singular or plural forms._
 * <a name="trim">trim</a> - _Trim interpolated values_
 * <a name="upper">upper</a> - _Uppercase interpolated values_
@@ -13,6 +14,24 @@ The `hide` tag replaces all interpolated values with 'xxx':
 ```javascript
 hide`Hi ${name}, you credit card number is ${cc_num}`
 //=> "Hi xxx, you credit card number is xxx"
+```
+### <a name="#lower"></a>lower
+
+
+Lowercase all interpolated values if they are strings.
+Non-string values are left as is.
+
+```javascript
+import {lower} from '@customcommander/tagtical';
+
+const food =
+ [ 'BREAD'
+ , 'BEANS'
+ , 'COVFEFE'
+ ];
+
+lower`I had ${food[0]}, ${food[1]} and ${food[2]} for breakfast`
+//=> "I had bread, beans and covfefe for breakfast"
 ```
 ### <a name="#pluralize"></a>pluralize
 
