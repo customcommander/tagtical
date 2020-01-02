@@ -1,17 +1,15 @@
 {
   "name": "@customcommander/tagtical",
   "version": "0.1.1",
-  "main": "index.js",
+  "main": "dist/index.js",
   "files": [
-    "src/",
-    "!src/*.test.js",
-    "!src/doc"
+    "dist/"
   ],
   "repository": "https://github.com/customcommander/tagtical.git",
   "author": "customcommander <hello@spinjs.com>",
   "license": "MIT",
   "scripts": {
-    "test": "tape index.test.js src/*.test.js",
+    "test": "make dist && tape test.js",
     "doc": "make README.md"
   },
   "devDependencies": {

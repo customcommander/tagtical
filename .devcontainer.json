@@ -1,6 +1,6 @@
 {
   "name": "tagtical",
-  "dockerFile": "Dockerfile",
+  "image": "customcommander/tagtical",
   "postCreateCommand": [
     "yarn"
   ]
