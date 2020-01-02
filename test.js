@@ -2,6 +2,7 @@ const test = require('tape');
 const tag = require('./dist');
 const
   { hide
+  , pluralize
   , trim
   , upper
   } = require('./dist');
@@ -47,6 +48,36 @@ test('hide: hides all values', t => {
   t.is
     ( hide`foo=${foo}, bar=${bar}`
     , "foo=xxx, bar=xxx"
+    );
+});
+
+test('pluralize: choose between singular or plural forms', t => {
+  t.plan(4);
+
+  let num;
+
+  num = 10;
+
+  t.is
+    ( pluralize`There is/are ${num} fox/foxes`
+    , 'There are 10 foxes'
+    );
+
+  t.is
+    ( pluralize`There is/are ${num} fox(es)`
+    , 'There are 10 foxes'
+    );
+
+  num = 1;
+
+  t.is
+    ( pluralize`There is/are ${num} fox/foxes`
+    , 'There is 1 fox'
+    );
+
+  t.is
+    ( pluralize`There is/are ${num} fox(es)`
+    , 'There is 1 fox'
     );
 });
 
