@@ -11,12 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - run: |
-          yarn
-          yarn semantic-release
+      - run: docker run -e NPM_TOKEN -e GH_TOKEN --rm --mount type=bind,src=$GITHUB_WORKSPACE,dst=/workspaces/tagtical customcommander/tagtical sh -c 'yarn && make dist && yarn semantic-release'
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GH_TOKEN: ${{ secrets.GH_TOKEN }}

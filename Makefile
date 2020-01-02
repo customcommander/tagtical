@@ -1,12 +1,25 @@
-SRC_FILES = $(shell find src -type f -not -name '*.test.js' -maxdepth 1)
-JSDOC_TMPL_DIR = src/doc/jsdoc-template
+SRC_FILES = $(shell find src -type f -name '*.js')
+DIST_FILES = $(SRC_FILES:src/%=dist/%)
+JSDOC_TMPL_DIR = doc/jsdoc-template
 
 all: README.md
-clean:; rm -rfv build
+clean:; rm -rfv build dist
 
-build/jsdoc-data.json: $(SRC_FILES)
+dist: $(DIST_FILES)
+
+dist/%.js: src/%.js
+	mkdir -p $(@D)
+	java -jar /workspaces/closure-compiler/compiler.jar \
+		--compilation_level=SIMPLE_OPTIMIZATIONS \
+		--language_in=ECMASCRIPT_2015 \
+		--language_out=ECMASCRIPT_2015 \
+		--js=$^ \
+		--js_output_file=$@
+
+
+build/jsdoc-data.json: $(filter-out src/index.js src/utils/%.js,$(SRC_FILES))
 	mkdir -p $(@D)
 	yarn -s jsdoc -t $(JSDOC_TMPL_DIR) $^ >$@
 
-README.md: build/jsdoc-data.json src/doc
-	yarn -s mustache $< -p src/doc/api.mustache src/doc/README.mustache >$@
+README.md: build/jsdoc-data.json doc src
+	yarn -s mustache $< -p doc/api.mustache doc/README.mustache >$@

@@ -13,9 +13,4 @@ jobs:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - run: |
-          yarn
-          yarn test
+      - run: docker run --rm --mount type=bind,src=$GITHUB_WORKSPACE,dst=/workspaces/tagtical customcommander/tagtical sh -c 'yarn && yarn test'
