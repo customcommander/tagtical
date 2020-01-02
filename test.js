@@ -1,7 +1,8 @@
 const test = require('tape');
 const tag = require('./dist');
 const
-  { hide
+  { defaults
+  , hide
   , lower
   , pluralize
   , trim
@@ -17,6 +18,28 @@ test('tag: can compose other tags', t => {
   t.is
     ( tag(upper, trim)`foo=${foo}, bar=${bar}`
     , "foo=FOO, bar=BAR"
+    );
+});
+
+test('defaults: replace empty values', t => {
+  t.plan(2);
+
+  let foo;
+  let bar;
+
+  foo = '';
+
+  t.is
+    ( defaults`foo=${foo}/aaa, bar=${bar}/bbb`
+    , 'foo=aaa, bar=bbb'
+    );
+
+  foo = false,
+  bar = 0;
+
+  t.is
+    ( defaults`foo=${foo}/aaa, bar=${bar}/bbb`
+    , 'foo=false, bar=0'
     );
 });
 
