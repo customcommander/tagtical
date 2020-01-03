@@ -28,6 +28,8 @@
  * Non-string values are left as is.
  *
  * ```javascript
+ * import {trim} from '@customcommander/tagtical';
+ *
  * const name = '   John    ';
  * trim`My name is ${name}!`;
  * //=> "My name is John!"

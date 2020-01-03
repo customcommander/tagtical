@@ -101,6 +101,8 @@ defaults`Hi ${username}/guest, you have ${num}/no new emails`;
 The `hide` tag replaces all interpolated values with 'xxx':
 
 ```javascript
+import {hide} from '@customcommander/tagtical';
+
 hide`Hi ${name}, your credit card number is ${cc_num}`
 //=> "Hi xxx, your credit card number is xxx"
 ```
@@ -174,6 +176,8 @@ Trim all interpolated values if they are strings.
 Non-string values are left as is.
 
 ```javascript
+import {trim} from '@customcommander/tagtical';
+
 const name = '   John    ';
 trim`My name is ${name}!`;
 //=> "My name is John!"
@@ -185,6 +189,8 @@ Uppercase all interpolated values if they are strings.
 Non-string values are left as is.
 
 ```javascript
+import {upper} from '@customcommander/tagtical';
+
 const name = 'john';
 const age = 40;
 upper`My name is ${name} and I am ${age} years old`

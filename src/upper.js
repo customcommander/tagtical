@@ -28,6 +28,8 @@
  * Non-string values are left as is.
  *
  * ```javascript
+ * import {upper} from '@customcommander/tagtical';
+ *
  * const name = 'john';
  * const age = 40;
  * upper`My name is ${name} and I am ${age} years old`
