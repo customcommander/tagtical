@@ -27,8 +27,8 @@
  * The `hide` tag replaces all interpolated values with 'xxx':
  *
  * ```javascript
- * hide`Hi ${name}, you credit card number is ${cc_num}`
- * //=> "Hi xxx, you credit card number is xxx"
+ * hide`Hi ${name}, your credit card number is ${cc_num}`
+ * //=> "Hi xxx, your credit card number is xxx"
  * ```
  */
 module.exports =
