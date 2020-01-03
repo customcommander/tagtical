@@ -1,4 +1,59 @@
-## API
+![](https://github.com/customcommander/tagtical/workflows/release/badge.svg?branch=master)
+![](https://github.com/customcommander/tagtical/workflows/continuous%20integration/badge.svg?branch=master)
+
+# tagtical
+
+
+_`tagtical` is a set of tagged templates designed to facilitate the process of building strings._
+
+```
+yarn add @customcommander/tagtical
+```
+
+## Why?
+
+Imagine that you're given a number _n_ and depending on its value you return either _"There is 1 fox"_ or _"There are 10 foxes"_.
+
+Here's a typical implementation:
+
+```javascript
+`There ${n === 1 ? 'is' : 'are'} ${n} ${n === 1 ? 'fox' : 'foxes'}`
+```
+
+This is not ideal IMHO. It's a simple text yet it has become "hard" to parse already.
+
+What about this?
+
+```javascript
+import {pluralize} from '@customcommander/tagtical';
+
+let n = 1;
+pluralize`There is/are ${n} fox(es)`;
+//=> "There is 1 fox"
+
+n = 10;
+pluralize`There is/are ${n} fox(es)`;
+//=> "There are 10 foxes"
+```
+
+If you find yourself nodding along, then _maybe_ `tagtical` is for you.
+
+## Design philosophy
+
+If an interpolated value is not of the expected type, it is returned as is. This means that you can always apply a tagged template without worrying about types:
+
+```javascript
+import {lower} from '@customcommander/tagtical';
+
+const num = 1;
+const food = 'BURRITO';
+
+lower`I only had ${num} ${food}!`;
+//=> "I only had 1 burrito!"
+
+```
+
+## Documentation
 
 * <a name="defaults">defaults</a> - _Replace an empty value with a default value_
 * <a name="hide">hide</a> - _Hides interpolated values_
