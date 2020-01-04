@@ -26,6 +26,9 @@ const RE = /^(\s*)(\/)([a-zA-Z0-9]+)(\s*)/;
 const is_empty = x =>
       x === null
   ||  x === undefined
+  ||  (   typeof x === 'number'
+      &&  !x
+      )
   ||  (   (   typeof x === 'string'
           ||  Array.isArray(x)
           )
@@ -62,6 +65,7 @@ const remove_default = str =>
  * - An empty string `''`
  * - An empty array `[]`
  * - An empty object `{}`
+ * - A number that is either `0` or `NaN`
  *
  * When the default value is used, the separator (i.e. the `/` character)
  * is removed from the string.
