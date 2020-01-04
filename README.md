@@ -1,18 +1,18 @@
 ![](https://github.com/customcommander/tagtical/workflows/release/badge.svg?branch=master)
 ![](https://github.com/customcommander/tagtical/workflows/continuous%20integration/badge.svg?branch=master)
 
+
 # tagtical
 
-
-_`tagtical` is a set of tagged templates designed to facilitate the process of building strings._
-
 ```
-yarn add @customcommander/tagtical
+npm i @customcommander/tagtical
 ```
+
+[![npm version](https://badge.fury.io/js/%40customcommander%2Ftagtical.svg)](https://www.npmjs.com/package/@customcommander/tagtical)
 
 ## Why?
 
-Imagine that you're given a number _n_ and depending on its value you return either _"There is 1 fox"_ or _"There are 10 foxes"_.
+Say you're given a number _n_ and depending on its value you return either _"There is 1 fox"_ or _"There are 10 foxes"_.
 
 Here's a typical implementation:
 
@@ -20,9 +20,9 @@ Here's a typical implementation:
 `There ${n === 1 ? 'is' : 'are'} ${n} ${n === 1 ? 'fox' : 'foxes'}`
 ```
 
-This is not ideal IMHO. It's a simple text yet it has become "hard" to parse already.
+Simple enough yet already difficult to parse and the intent is obfuscated.
 
-What about this?
+Can we do better? How about this?
 
 ```javascript
 import {pluralize} from '@customcommander/tagtical';
@@ -55,14 +55,14 @@ lower`I only had ${num} ${food}!`;
 
 ## Documentation
 
-* <a name="defaults">defaults</a> - _Replace an empty value with a default value_
-* <a name="hide">hide</a> - _Hides interpolated values_
-* <a name="lower">lower</a> - _Lowercase interpolated values_
-* <a name="pluralize">pluralize</a> - _Choose between singular or plural forms._
-* <a name="trim">trim</a> - _Trim interpolated values_
-* <a name="upper">upper</a> - _Uppercase interpolated values_
+* <a name="#defaults">defaults</a> - _Replace an empty value with a default value_
+* <a name="#hide">hide</a> - _Hides interpolated values_
+* <a name="#lower">lower</a> - _Lowercase interpolated values_
+* <a name="#pluralize">pluralize</a> - _Choose between singular or plural forms._
+* <a name="#trim">trim</a> - _Trim interpolated values_
+* <a name="#upper">upper</a> - _Uppercase interpolated values_
 
-### <a name="#defaults"></a>defaults
+### <a name="defaults"></a>defaults
 
 
 The default value for an empty interpolated value is defined in the string template itself.<br>
@@ -95,7 +95,7 @@ var num = 10;
 defaults`Hi ${username}/guest, you have ${num}/no new emails`;
 //=> "Hi John, you have 10 new emails"
 ```
-### <a name="#hide"></a>hide
+### <a name="hide"></a>hide
 
 
 The `hide` tag replaces all interpolated values with 'xxx':
@@ -106,7 +106,7 @@ import {hide} from '@customcommander/tagtical';
 hide`Hi ${name}, your credit card number is ${cc_num}`
 //=> "Hi xxx, your credit card number is xxx"
 ```
-### <a name="#lower"></a>lower
+### <a name="lower"></a>lower
 
 
 Lowercase all interpolated values if they are strings.
@@ -124,7 +124,7 @@ const food =
 lower`I had ${food[0]}, ${food[1]} and ${food[2]} for breakfast`
 //=> "I had bread, beans and covfefe for breakfast"
 ```
-### <a name="#pluralize"></a>pluralize
+### <a name="pluralize"></a>pluralize
 
 
 The `pluralize` tag allows you to build the "template" of a sentence without having
@@ -169,7 +169,7 @@ pluralize`There is/are ${num} fox/foxes`
 the `pluralize` tag __won't__ perform any replacement on the adjacent text!
 
 📢 A `0` will pick the __plural__ form(s).
-### <a name="#trim"></a>trim
+### <a name="trim"></a>trim
 
 
 Trim all interpolated values if they are strings.
@@ -182,7 +182,7 @@ const name = '   John    ';
 trim`My name is ${name}!`;
 //=> "My name is John!"
 ```
-### <a name="#upper"></a>upper
+### <a name="upper"></a>upper
 
 
 Uppercase all interpolated values if they are strings.
@@ -196,32 +196,3 @@ const age = 40;
 upper`My name is ${name} and I am ${age} years old`
 //=> "My name is JOHN and I am 40 years old"
 ```
-
-## Contributing
-
-Each tag must be the default export of its own module which must be named after the tag and located in the `src` directory.
-
-A tag must be documented with a JSDoc block set on the export statement.
-
-```javascript
-// src/foo_bar.js
-
-/**
- * Short description goes here (<= 80 characters)
- *
- * Long description goes here...
- * Long description goes here...
- * Long description goes here...
- *
- * Can use Markdown too!
- *
- * ```javascript
- * foo_bar`hello ${world}!`
- * ```
- */
-module.exports = function foo_bar() {
-  //...
-};
-```
-
-Run `yarn doc` to automatically update this README file.

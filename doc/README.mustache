@@ -1,18 +1,18 @@
 ![](https://github.com/customcommander/tagtical/workflows/release/badge.svg?branch=master)
 ![](https://github.com/customcommander/tagtical/workflows/continuous%20integration/badge.svg?branch=master)
 
+
 # tagtical
 
-
-_`tagtical` is a set of tagged templates designed to facilitate the process of building strings._
-
 ```
-yarn add @customcommander/tagtical
+npm i @customcommander/tagtical
 ```
+
+[![npm version](https://badge.fury.io/js/%40customcommander%2Ftagtical.svg)](https://www.npmjs.com/package/@customcommander/tagtical)
 
 ## Why?
 
-Imagine that you're given a number _n_ and depending on its value you return either _"There is 1 fox"_ or _"There are 10 foxes"_.
+Say you're given a number _n_ and depending on its value you return either _"There is 1 fox"_ or _"There are 10 foxes"_.
 
 Here's a typical implementation:
 
@@ -20,9 +20,9 @@ Here's a typical implementation:
 `There ${n === 1 ? 'is' : 'are'} ${n} ${n === 1 ? 'fox' : 'foxes'}`
 ```
 
-This is not ideal IMHO. It's a simple text yet it has become "hard" to parse already.
+Simple enough yet already difficult to parse and the intent is obfuscated.
 
-What about this?
+Can we do better? How about this?
 
 ```javascript
 import {pluralize} from '@customcommander/tagtical';
@@ -56,32 +56,3 @@ lower`I only had ${num} ${food}!`;
 ## Documentation
 
 {{> api}}
-
-## Contributing
-
-Each tag must be the default export of its own module which must be named after the tag and located in the `src` directory.
-
-A tag must be documented with a JSDoc block set on the export statement.
-
-```javascript
-// src/foo_bar.js
-
-/**
- * Short description goes here (<= 80 characters)
- *
- * Long description goes here...
- * Long description goes here...
- * Long description goes here...
- *
- * Can use Markdown too!
- *
- * ```javascript
- * foo_bar`hello ${world}!`
- * ```
- */
-module.exports = function foo_bar() {
-  //...
-};
-```
-
-Run `yarn doc` to automatically update this README file.
