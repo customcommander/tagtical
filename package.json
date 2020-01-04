@@ -1,6 +1,7 @@
 {
   "name": "@customcommander/tagtical",
   "version": "0.1.1",
+  "description": "Tagged templates to enhance your text processing experience",
   "main": "dist/index.js",
   "files": [
     "dist/"
@@ -8,6 +9,12 @@
   "repository": "https://github.com/customcommander/tagtical.git",
   "author": "customcommander <hello@spinjs.com>",
   "license": "MIT",
+  "keywords": [
+    "tagged template",
+    "template literal",
+    "placeholder",
+    "text processing"
+  ],
   "scripts": {
     "test": "make dist && tape test.js",
     "doc": "make README.md"
