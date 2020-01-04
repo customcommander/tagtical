@@ -75,6 +75,7 @@ A value is considered empty if it is:
 - An empty string `''`
 - An empty array `[]`
 - An empty object `{}`
+- A number that is either `0` or `NaN`
 
 When the default value is used, the separator (i.e. the `/` character)
 is removed from the string.

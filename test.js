@@ -39,7 +39,7 @@ test('defaults: replace empty values', t => {
 
   t.is
     ( defaults`foo=${foo}/aaa, bar=${bar}/bbb`
-    , 'foo=false, bar=0'
+    , 'foo=false, bar=bbb'
     );
 });
 
