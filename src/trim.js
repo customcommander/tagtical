@@ -21,6 +21,8 @@
  * SOFTWARE.
  */
 
+const tag_function = require('./utils/tag-function');
+
 /**
  * Trim interpolated values
  *
@@ -36,10 +38,12 @@
  * ```
  */
 module.exports =
-  (l, x, r) =>
-    [ l
-    , typeof x === 'string'
-        ? x.trim()
-        : x
-    , r
-    ]
+  tag_function
+    ( (l, x, r) =>
+        [ l
+        , typeof x === 'string'
+            ? x.trim()
+            : x
+        , r
+        ]
+    )

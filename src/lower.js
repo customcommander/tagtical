@@ -21,6 +21,8 @@
  * SOFTWARE.
  */
 
+const tag_function = require('./utils/tag-function');
+
 /**
  * Lowercase interpolated values
  *
@@ -41,10 +43,12 @@
  * ```
  */
 module.exports =
-  (l, x, r) =>
-    [ l
-    , typeof x === 'string'
-        ? x.toLowerCase()
-        : x
-    , r
-    ];
+  tag_function
+    ( (l, x, r) =>
+        [ l
+        , typeof x === 'string'
+            ? x.toLowerCase()
+            : x
+        , r
+        ]
+    );

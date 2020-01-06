@@ -21,6 +21,8 @@
  * SOFTWARE.
  */
 
+const tag_function = require('./utils/tag-function');
+
 /**
  * Uppercase interpolated values
  *
@@ -37,10 +39,12 @@
  * ```
  */
 module.exports =
-  (l, x, r) =>
-    [ l
-    , typeof x === 'string'
-        ? x.toUpperCase()
-        : x
-    , r
-    ];
+  tag_function
+    ( (l, x, r) =>
+        [ l
+        , typeof x === 'string'
+            ? x.toUpperCase()
+            : x
+        , r
+        ]
+    );

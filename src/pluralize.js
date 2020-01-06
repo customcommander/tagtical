@@ -21,6 +21,8 @@
  * SOFTWARE.
  */
 
+const tag_function = require('./utils/tag-function');
+
 const is_pos_int = x =>
   Number.isInteger(x) && x >= 0;
 
@@ -48,7 +50,6 @@ const get_plural_form = str =>
     plf[0] === '/'
       ? lws + plf.substring(1) + tws
       : lws + snf + plf.substring(1, plf.length-1) + tws);
-
 
 /**
  * Choose between singular or plural forms.
@@ -97,14 +98,16 @@ const get_plural_form = str =>
  * 📢 A `0` will pick the __plural__ form(s).
  */
 module.exports =
-  (l, x, r) =>
-    [   !is_pos_int(x)  ? l
-      : x === 1         ? get_singular_form(l)
-                        : get_plural_form(l)
+  tag_function
+    ( (l, x, r) =>
+        [   !is_pos_int(x)  ? l
+          : x === 1         ? get_singular_form(l)
+                            : get_plural_form(l)
 
-    , x
+        , x
 
-    ,   !is_pos_int(x)  ? r
-      : x === 1         ? get_singular_form(r)
-                        : get_plural_form(r)
-    ];
+        ,   !is_pos_int(x)  ? r
+          : x === 1         ? get_singular_form(r)
+                            : get_plural_form(r)
+        ]
+    );

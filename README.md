@@ -99,13 +99,20 @@ defaults`Hi ${username}/guest, you have ${num}/no new emails`;
 ### <a name="hide"></a>hide
 
 
-The `hide` tag replaces all interpolated values with 'xxx':
+The `hide` tag replaces all interpolated values with a default mask `'xxx'`:
 
 ```javascript
 import {hide} from '@customcommander/tagtical';
 
 hide`Hi ${name}, your credit card number is ${cc_num}`
 //=> "Hi xxx, your credit card number is xxx"
+```
+
+The default mask can be overridden:
+
+```javascript
+hide({mask: '🌯'})`Hi ${name}, your credit card number is ${cc_num}`
+//=> "Hi 🌯, your credit card number is 🌯"
 ```
 ### <a name="lower"></a>lower
 
