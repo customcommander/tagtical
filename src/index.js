@@ -1,4 +1,5 @@
-const tag_function = require('./utils/tag_function');
+const tag_function = require('./utils/tag-function');
+const use_tag = require('./utils/use-tag');
 const join = require('./utils/join');
 const intersperse = require('./utils/intersperse');
 const compose = require('./utils/compose');
@@ -11,15 +12,15 @@ const upper = require('./upper');
 
 const tag = (...fns) =>
   (strs, ...vals) =>
-    compose(join(''), ...fns.map(tag_function.unwrap))
+    compose(join(''), ...fns.map(use_tag.unwrap))
       (intersperse(strs, vals));
 
-tag.defaults = tag_function(defaults);
-tag.hide = tag_function(hide);
-tag.lower = tag_function(lower);
-tag.pluralize = tag_function(pluralize);
-tag.trim = tag_function(trim);
-tag.upper = tag_function(upper);
-tag.of = tag_function;
+tag.defaults = use_tag(defaults);
+tag.hide = use_tag(hide);
+tag.lower = use_tag(lower);
+tag.pluralize = use_tag(pluralize);
+tag.trim = use_tag(trim);
+tag.upper = use_tag(upper);
+tag.of = compose(use_tag, tag_function);
 
 module.exports = tag;

@@ -21,10 +21,12 @@
  * SOFTWARE.
  */
 
+const tag_function = require('./utils/tag-function');
+
 /**
  * Hides interpolated values
  *
- * The `hide` tag replaces all interpolated values with 'xxx':
+ * The `hide` tag replaces all interpolated values with a default mask `'xxx'`:
  *
  * ```javascript
  * import {hide} from '@customcommander/tagtical';
@@ -32,10 +34,24 @@
  * hide`Hi ${name}, your credit card number is ${cc_num}`
  * //=> "Hi xxx, your credit card number is xxx"
  * ```
+ *
+ * The default mask can be overridden:
+ *
+ * ```javascript
+ * hide({mask: '🌯'})`Hi ${name}, your credit card number is ${cc_num}`
+ * //=> "Hi 🌯, your credit card number is 🌯"
+ * ```
+ *
+ * @function
  */
 module.exports =
-  (l, x, r) =>
-    [ l
-    , 'xxx'
-    , r
-    ];
+  tag_function
+    ( (l, x, r, {mask}) =>
+        [ l
+        , mask
+        , r
+        ]
+    /* default options */
+    , { mask: 'xxx'
+      }
+    );

@@ -63,8 +63,28 @@ test('tag: can compose user-defined tags', t => {
     );
 });
 
-test('hide: hides all values', t => {
+test('user-defined tags can receive options', t => {
   t.plan(1);
+
+  const myTag =
+    tag.of
+      ( (l, x, r, {foo}) =>
+          [ l
+          , foo
+          , r
+          ]
+      , { foo: 'fooooooo'
+        }
+      );
+
+  t.is
+    ( myTag({foo: 'baaar'})`Hello ${'world'}!`
+    , 'Hello baaar!'
+    );
+});
+
+test('hide: hides all values', t => {
+  t.plan(2);
 
   const foo = 'foo';
   const bar = 'bar';
@@ -72,6 +92,11 @@ test('hide: hides all values', t => {
   t.is
     ( hide`foo=${foo}, bar=${bar}`
     , "foo=xxx, bar=xxx"
+    );
+
+  t.is
+    ( hide({mask: '🌯'})`foo=${foo}, bar=${bar}`
+    , "foo=🌯, bar=🌯"
     );
 });
 
