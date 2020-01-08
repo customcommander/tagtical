@@ -96,6 +96,13 @@ var num = 10;
 defaults`Hi ${username}/guest, you have ${num}/no new emails`;
 //=> "Hi John, you have 10 new emails"
 ```
+
+
+
+
+_This tag does not have any options_
+
+
 ### <a name="hide"></a>hide
 
 
@@ -108,12 +115,20 @@ hide`Hi ${name}, your credit card number is ${cc_num}`
 //=> "Hi xxx, your credit card number is xxx"
 ```
 
-The default mask can be overridden:
+This `hide` tag has the following options:
 
-```javascript
-hide({mask: '🌯'})`Hi ${name}, your credit card number is ${cc_num}`
-//=> "Hi 🌯, your credit card number is 🌯"
-```
+* mask _(default: `'xxx'`)_
+
+  The string to use to replace an interpolated value.
+
+   ```javascript
+   hide({mask: '???'})`Your name is ${name} and you are ${age} old`;
+   //=> "Your name is ??? and you are ??? old"
+   ```
+
+
+
+
 ### <a name="lower"></a>lower
 
 
@@ -132,6 +147,13 @@ const food =
 lower`I had ${food[0]}, ${food[1]} and ${food[2]} for breakfast`
 //=> "I had bread, beans and covfefe for breakfast"
 ```
+
+
+
+
+_This tag does not have any options_
+
+
 ### <a name="pluralize"></a>pluralize
 
 
@@ -177,6 +199,13 @@ pluralize`There is/are ${num} fox/foxes`
 the `pluralize` tag __won't__ perform any replacement on the adjacent text!
 
 📢 A `0` will pick the __plural__ form(s).
+
+
+
+
+_This tag does not have any options_
+
+
 ### <a name="trim"></a>trim
 
 
@@ -190,6 +219,13 @@ const name = '   John    ';
 trim`My name is ${name}!`;
 //=> "My name is John!"
 ```
+
+
+
+
+_This tag does not have any options_
+
+
 ### <a name="upper"></a>upper
 
 
@@ -204,3 +240,10 @@ const age = 40;
 upper`My name is ${name} and I am ${age} years old`
 //=> "My name is JOHN and I am 40 years old"
 ```
+
+
+
+
+_This tag does not have any options_
+
+
