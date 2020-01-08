@@ -16,7 +16,7 @@ dist/%.js: src/%.js
 		--js_output_file=$@
 
 
-build/doc-data.json: $(filter-out src/index.js src/utils/%.js,$(SRC_FILES))
+build/doc-data.json: $(filter-out src/index.js src/utils/%.js src/types/%.js,$(SRC_FILES))
 	mkdir -p $(@D)
 	yarn -s jsdoc -X $^ | jq -f doc/process-doc.jq >$@
 
