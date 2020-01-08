@@ -6,4 +6,21 @@
 ### <a name="{{tag}}"></a>{{tag}}
 
 {{{description}}}
+
+{{#has_opts}}
+This `{{tag}}` tag has the following options:
+{{/has_opts}}
+
+{{#opts}}
+* {{name}} _(default: `{{{defaultvalue}}}`)_
+
+  {{{description}}}
+{{/opts}}
+
+
+{{^has_opts}}
+_This tag does not have any options_
+{{/has_opts}}
+
+
 {{/.}}
