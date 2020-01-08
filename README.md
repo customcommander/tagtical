@@ -55,14 +55,14 @@ lower`I only had ${num} ${food}!`;
 
 ## Documentation
 
-* <a name="#defaults">defaults</a> - _Replace an empty value with a default value_
-* <a name="#hide">hide</a> - _Hides interpolated values_
-* <a name="#lower">lower</a> - _Lowercase interpolated values_
-* <a name="#pluralize">pluralize</a> - _Choose between singular or plural forms._
-* <a name="#trim">trim</a> - _Trim interpolated values_
-* <a name="#upper">upper</a> - _Uppercase interpolated values_
+* [defaults](#defaults) - _Replace an empty value with a default value_
+* [hide](#hide) - _Hides interpolated values_
+* [lower](#lower) - _Lowercase interpolated values_
+* [pluralize](#pluralize) - _Choose between singular or plural forms._
+* [trim](#trim) - _Trim interpolated values_
+* [upper](#upper) - _Uppercase interpolated values_
 
-### <a name="defaults"></a>defaults
+### defaults
 
 
 The default value for an empty interpolated value is defined in the string template itself.<br>
@@ -101,7 +101,7 @@ defaults`Hi ${username}/guest, you have ${num}/no new emails`;
 
 _(The `defaults` tag does not have any options.)_
 
-### <a name="hide"></a>hide
+### hide
 
 
 The `hide` tag replaces all interpolated values with a default mask `'xxx'`:
@@ -125,7 +125,7 @@ Options:
    ```
 
 
-### <a name="lower"></a>lower
+### lower
 
 
 Lowercase all interpolated values if they are strings.
@@ -148,7 +148,7 @@ lower`I had ${food[0]}, ${food[1]} and ${food[2]} for breakfast`
 
 _(The `lower` tag does not have any options.)_
 
-### <a name="pluralize"></a>pluralize
+### pluralize
 
 
 The `pluralize` tag allows you to build the "template" of a sentence without having
@@ -198,7 +198,7 @@ the `pluralize` tag __won't__ perform any replacement on the adjacent text!
 
 _(The `pluralize` tag does not have any options.)_
 
-### <a name="trim"></a>trim
+### trim
 
 
 Trim all interpolated values if they are strings.
@@ -216,7 +216,7 @@ trim`My name is ${name}!`;
 
 _(The `trim` tag does not have any options.)_
 
-### <a name="upper"></a>upper
+### upper
 
 
 Uppercase all interpolated values if they are strings.
