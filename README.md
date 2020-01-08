@@ -99,9 +99,7 @@ defaults`Hi ${username}/guest, you have ${num}/no new emails`;
 
 
 
-
-_This tag does not have any options_
-
+_(The `defaults` tag does not have any options.)_
 
 ### <a name="hide"></a>hide
 
@@ -115,9 +113,9 @@ hide`Hi ${name}, your credit card number is ${cc_num}`
 //=> "Hi xxx, your credit card number is xxx"
 ```
 
-This `hide` tag has the following options:
+Options:
 
-* mask _(default: `'xxx'`)_
+* __mask__ (default `'xxx'`)
 
   The string to use to replace an interpolated value.
 
@@ -125,8 +123,6 @@ This `hide` tag has the following options:
    hide({mask: '???'})`Your name is ${name} and you are ${age} old`;
    //=> "Your name is ??? and you are ??? old"
    ```
-
-
 
 
 ### <a name="lower"></a>lower
@@ -150,9 +146,7 @@ lower`I had ${food[0]}, ${food[1]} and ${food[2]} for breakfast`
 
 
 
-
-_This tag does not have any options_
-
+_(The `lower` tag does not have any options.)_
 
 ### <a name="pluralize"></a>pluralize
 
@@ -202,9 +196,7 @@ the `pluralize` tag __won't__ perform any replacement on the adjacent text!
 
 
 
-
-_This tag does not have any options_
-
+_(The `pluralize` tag does not have any options.)_
 
 ### <a name="trim"></a>trim
 
@@ -222,9 +214,7 @@ trim`My name is ${name}!`;
 
 
 
-
-_This tag does not have any options_
-
+_(The `trim` tag does not have any options.)_
 
 ### <a name="upper"></a>upper
 
@@ -243,7 +233,5 @@ upper`My name is ${name} and I am ${age} years old`
 
 
 
-
-_This tag does not have any options_
-
+_(The `upper` tag does not have any options.)_
 
