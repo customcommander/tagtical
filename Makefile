@@ -1,6 +1,5 @@
 SRC_FILES = $(shell find src -type f -name '*.js')
 DIST_FILES = $(SRC_FILES:src/%=dist/%)
-JSDOC_TMPL_DIR = doc/jsdoc-template
 
 all: README.md
 clean:; rm -rfv build dist
@@ -17,9 +16,9 @@ dist/%.js: src/%.js
 		--js_output_file=$@
 
 
-build/jsdoc-data.json: $(filter-out src/index.js src/utils/%.js,$(SRC_FILES))
+build/doc-data.json: $(filter-out src/index.js src/utils/%.js,$(SRC_FILES))
 	mkdir -p $(@D)
-	yarn -s jsdoc -t $(JSDOC_TMPL_DIR) $^ >$@
+	yarn -s jsdoc -X $^ | jq -f doc/process-doc.jq >$@
 
-README.md: build/jsdoc-data.json doc src
+README.md: build/doc-data.json doc src
 	yarn -s mustache $< -p doc/api.mustache doc/README.mustache >$@
