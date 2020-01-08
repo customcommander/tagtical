@@ -24,6 +24,22 @@
 const tag_function = require('./utils/tag-function');
 
 /**
+ * @typedef {Object} HideOpts
+ * @property {string} [mask='xxx']
+ *    The string to use to replace an interpolated value.
+ *
+ *    ```javascript
+ *    hide({mask: '???'})`Your name is ${name} and you are ${age} old`;
+ *    //=> "Your name is ??? and you are ??? old"
+ *    ```
+ */
+
+/** @type HideOpts */
+const DEFAULT_OPTS =
+  { mask: 'xxx'
+  };
+
+/**
  * Hides interpolated values
  *
  * The `hide` tag replaces all interpolated values with a default mask `'xxx'`:
@@ -34,15 +50,6 @@ const tag_function = require('./utils/tag-function');
  * hide`Hi ${name}, your credit card number is ${cc_num}`
  * //=> "Hi xxx, your credit card number is xxx"
  * ```
- *
- * The default mask can be overridden:
- *
- * ```javascript
- * hide({mask: '🌯'})`Hi ${name}, your credit card number is ${cc_num}`
- * //=> "Hi 🌯, your credit card number is 🌯"
- * ```
- *
- * @function
  */
 module.exports =
   tag_function
@@ -51,7 +58,5 @@ module.exports =
         , mask
         , r
         ]
-    /* default options */
-    , { mask: 'xxx'
-      }
+    , DEFAULT_OPTS
     );
