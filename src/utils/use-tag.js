@@ -1,5 +1,4 @@
-const compose = require('./compose');
-const join = require('./join');
+const {compose, join} = require('./fp');
 const intersperse = require('./intersperse');
 const transform = require('./transform');
 

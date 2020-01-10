@@ -5,6 +5,7 @@ const
   , hide
   , lower
   , pluralize
+  , time
   , trim
   , upper
   } = require('./dist');
@@ -128,6 +129,25 @@ test('pluralize: choose between singular or plural forms', t => {
     ( pluralize`There is/are ${num} fox(es)`
     , 'There is 1 fox'
     );
+});
+
+test('time: format dates within a string', t => {
+  t.plan(3);
+
+  t.is
+    ( time`Last login on ${new Date('2020-01-09')}@Y-m-d`
+    , "Last login on 2020-01-09"
+    );
+
+  t.is
+    ( time`Last login on ${new Date('2020-01-09')}@j/n/y`
+    , "Last login on 9/1/20"
+    )
+
+  t.is
+    ( time`Last login on ${0/0}@j/n/y`
+    , "Last login on NaN"
+    )
 });
 
 test('trim: trim all values', t => {
