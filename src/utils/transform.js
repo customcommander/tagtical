@@ -1,4 +1,4 @@
-const cont = require('./cont');
+const {cont} = require('./fp');
 
 const transformer = (fn, xs, i=1) =>
   i >= xs.length

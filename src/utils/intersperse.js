@@ -21,7 +21,7 @@
  * SOFTWARE.
  */
 
-const init = require('./init');
+const {init} = require('./fp');
 
 /**
  * Put `b` inside `a` at regular intervals.

@@ -59,6 +59,7 @@ lower`I only had ${num} ${food}!`;
 * [hide](#hide) - _Hides interpolated values_
 * [lower](#lower) - _Lowercase interpolated values_
 * [pluralize](#pluralize) - _Choose between singular or plural forms._
+* [time](#time) - _Format dates within a string._
 * [trim](#trim) - _Trim interpolated values_
 * [upper](#upper) - _Uppercase interpolated values_
 
@@ -197,6 +198,48 @@ the `pluralize` tag __won't__ perform any replacement on the adjacent text!
 
 
 _(The `pluralize` tag does not have any options.)_
+
+### time
+
+
+The `time` tag formats all interpolated dates according to a given format.
+
+```javascript
+import {time} from '@customcommander/tagtical';
+
+time`Last login on ${date}@Y-m-d`;
+//=> "Last login on 2020-01-09"
+```
+
+The format is attached to the date as follow `${date}@Y-m-d`.
+
+The `@` sign links a date with a format and the format is made of formatting characters
+as seen in [PHP's date function](https://www.php.net/manual/en/function.date.php).
+The format is removed from the string after processing.
+
+Only a subset of these options is supported at the moment:
+
+| Character | Description                                     |
+|:----------|:------------------------------------------------|
+| Y         | Year. Four digits                               |
+| y         | Year. Two digits                                |
+| m         | Month. Two digits with leading zeros. e.g. "01" |
+| n         | Month. No leading zeros. e.g. "1"               |
+| d         | Day. Two digits; leading zeros. e.g. "01"       |
+| j         | Day. No leading zeros. e.g. "1"                 |
+
+Anything that isn't a formatting character is rendered as is.
+
+When an interpolated value isn't a date, the value is rendered as is and the date format is removed.
+
+```javascript
+time`Last login on ${0/0}@Y-m-d`;
+//=> Last login on NaN
+```
+
+
+
+_(The `time` tag does not have any options.)_
 
 ### trim
 
