@@ -32,12 +32,40 @@ const tag_function = require('./utils/tag-function');
  *    hide({mask: '???'})`Your name is ${name} and you are ${age} old`;
  *    //=> "Your name is ??? and you are ??? old"
  *    ```
+ *
+ * @property {boolean} [fill=false]
+ *    When set to `true`, the mask will cover the entire space that the interpolated
+ *    value would have taken otherwise.
+ *
+ *    Please note that if the interpolated value isn't a string, it will be
+ *    converted into one via a call to `String()`.
+ *
+ *    ```javascript
+ *    hide`Your name is ${'John'} and you live in ${'Manchester'}`;
+ *    //=> "Your name is xxx and you live in xxx"
+ *
+ *    hide({fill: true})`Your name is ${'John'} and you live in ${'Manchester'}`;
+ *    //=> "Your name is xxxx and you live in xxxxxxxxxx"
+ *    ```
  */
 
 /** @type HideOpts */
 const DEFAULT_OPTS =
   { mask: 'xxx'
+  , fill: false
   };
+
+/**
+ * Returns the appropriate mask for given string `str` according to given options `opts`.
+ * @param {HideOpts} opts
+ * @param {string} str
+ * @return {string}
+ */
+const create_mask = ({mask, fill}, str) =>
+    typeof mask !== 'string'  ? create_mask({mask: DEFAULT_OPTS.mask, fill}, str)
+  : typeof fill !== 'boolean' ? create_mask({mask, fill: DEFAULT_OPTS.fill}, str)
+  : fill === true             ? mask.repeat(Math.ceil(str.length/mask.length)).substring(0, str.length)
+                              : mask;
 
 /**
  * Hides interpolated values
@@ -47,15 +75,15 @@ const DEFAULT_OPTS =
  * ```javascript
  * import {hide} from '@customcommander/tagtical';
  * 
- * hide`Hi ${name}, your credit card number is ${cc_num}`
+ * hide`Hi ${'John'}, your credit card number is ${'1234-2345-3456-4567'}`
  * //=> "Hi xxx, your credit card number is xxx"
  * ```
  */
 module.exports =
   tag_function
-    ( (l, x, r, {mask}) =>
+    ( (l, x, r, opts) =>
         [ l
-        , mask
+        , create_mask(opts, String(x))
         , r
         ]
     , DEFAULT_OPTS

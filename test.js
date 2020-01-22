@@ -73,7 +73,7 @@ test('user-defined tags can receive options', t => {
 });
 
 test('hide: hides all values', t => {
-  t.plan(2);
+  t.plan(5);
 
   t.is
     ( hide`foo=${'foo'}, bar=${'bar'}`
@@ -85,6 +85,27 @@ test('hide: hides all values', t => {
     ( hide({mask: '🌯'})`foo=${'foo'}, bar=${'bar'}`
     , "foo=🌯, bar=🌯"
     , 'replace values with user-defined mask'
+    );
+
+  t.is
+    ( hide({fill: true})`Your name is ${'John'} and you live in ${'Manchester'}`
+    , 'Your name is xxxx and you live in xxxxxxxxxx'
+    , 'fill the space that an interpolated would have taken otherwise'
+    );
+
+  const today = new Date();
+  const today_str = String(today);
+
+  t.is
+    ( hide({fill: true})`Today is ${today}`
+    , `Today is ${'x'.repeat(today_str.length)}`
+    , 'convert non-string values to strings'
+    );
+
+  t.is
+    ( hide({mask: [1], fill: [1]})`Hi ${'John'}`
+    , 'Hi xxx'
+    , 'use default options when user-defined options are invalid'
     );
 });
 

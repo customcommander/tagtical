@@ -110,7 +110,7 @@ The `hide` tag replaces all interpolated values with a default mask `'xxx'`:
 ```javascript
 import {hide} from '@customcommander/tagtical';
 
-hide`Hi ${name}, your credit card number is ${cc_num}`
+hide`Hi ${'John'}, your credit card number is ${'1234-2345-3456-4567'}`
 //=> "Hi xxx, your credit card number is xxx"
 ```
 
@@ -123,6 +123,21 @@ Options:
    ```javascript
    hide({mask: '???'})`Your name is ${name} and you are ${age} old`;
    //=> "Your name is ??? and you are ??? old"
+   ```
+* __fill__ (default `false`)
+
+  When set to `true`, the mask will cover the entire space that the interpolated
+   value would have taken otherwise.
+
+   Please note that if the interpolated value isn't a string, it will be
+   converted into one via a call to `String()`.
+
+   ```javascript
+   hide`Your name is ${'John'} and you live in ${'Manchester'}`;
+   //=> "Your name is xxx and you live in xxx"
+
+   hide({fill: true})`Your name is ${'John'} and you live in ${'Manchester'}`;
+   //=> "Your name is xxxx and you live in xxxxxxxxxx"
    ```
 
 
