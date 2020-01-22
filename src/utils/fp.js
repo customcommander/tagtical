@@ -135,14 +135,14 @@ const trim =
     x.trim();
 
 /**
- * Joins given list `xs` with given string `x`.
- * @param {string} x String to use to join given list
+ * Joins given list `xs` with given string `s`.
+ * @param {string} s String to use to join given list
  * @return {function(Array): string}
  */
 const join =
-  chr =>
+  s =>
     xs =>
-      xs.join(chr);
+      xs.join(s);
 
 module.exports =
   { compose
