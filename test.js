@@ -13,11 +13,8 @@ const
 test('tag: can compose other tags', t => {
   t.plan(1);
 
-  const foo = '  foo  ';
-  const bar = '  bar  ';
-
   t.is
-    ( tag(upper, trim)`foo=${foo}, bar=${bar}`
+    ( tag(upper, trim)`foo=${'  foo  '}, bar=${'  bar  '}`
     , "foo=FOO, bar=BAR"
     );
 });
@@ -25,30 +22,21 @@ test('tag: can compose other tags', t => {
 test('defaults: replace empty values', t => {
   t.plan(2);
 
-  let foo;
-  let bar;
-
-  foo = '';
-
   t.is
-    ( defaults`foo=${foo}/aaa, bar=${bar}/bbb`
+    ( defaults`foo=${''}/aaa, bar=${undefined}/bbb`
     , 'foo=aaa, bar=bbb'
+    , 'empty string and undefined are empty values'
     );
 
-  foo = false,
-  bar = 0;
-
   t.is
-    ( defaults`foo=${foo}/aaa, bar=${bar}/bbb`
+    ( defaults`foo=${false}/aaa, bar=${0}/bbb`
     , 'foo=false, bar=bbb'
+    , 'false is not an empty value but 0 is'
     );
 });
 
 test('tag: can compose user-defined tags', t => {
   t.plan(1);
-
-  const foo = '  foo  ';
-  const bar = '  bar  ';
 
   const myTag =
     tag.of(
@@ -59,7 +47,7 @@ test('tag: can compose user-defined tags', t => {
         ]);
 
   t.is
-    ( tag(upper, myTag, trim)`foo=${foo}, bar=${bar}`
+    ( tag(upper, myTag, trim)`foo=${'  foo  '}, bar=${'  bar  '}`
     , "|FOO|BAR|"
     );
 });
@@ -87,47 +75,44 @@ test('user-defined tags can receive options', t => {
 test('hide: hides all values', t => {
   t.plan(2);
 
-  const foo = 'foo';
-  const bar = 'bar';
-
   t.is
-    ( hide`foo=${foo}, bar=${bar}`
+    ( hide`foo=${'foo'}, bar=${'bar'}`
     , "foo=xxx, bar=xxx"
+    , 'replace values with default mask'
     );
 
   t.is
-    ( hide({mask: '🌯'})`foo=${foo}, bar=${bar}`
+    ( hide({mask: '🌯'})`foo=${'foo'}, bar=${'bar'}`
     , "foo=🌯, bar=🌯"
+    , 'replace values with user-defined mask'
     );
 });
 
 test('pluralize: choose between singular or plural forms', t => {
   t.plan(4);
 
-  let num;
-
-  num = 10;
-
   t.is
-    ( pluralize`There is/are ${num} fox/foxes`
+    ( pluralize`There is/are ${10} fox/foxes`
     , 'There are 10 foxes'
+    , 'pick the plural forms'
     );
 
   t.is
-    ( pluralize`There is/are ${num} fox(es)`
+    ( pluralize`There is/are ${10} fox(es)`
     , 'There are 10 foxes'
-    );
-
-  num = 1;
-
-  t.is
-    ( pluralize`There is/are ${num} fox/foxes`
-    , 'There is 1 fox'
+    , 'pick the simplified plural forms'
     );
 
   t.is
-    ( pluralize`There is/are ${num} fox(es)`
+    ( pluralize`There is/are ${1} fox/foxes`
     , 'There is 1 fox'
+    , 'pick the singular forms'
+    );
+
+  t.is
+    ( pluralize`There is/are ${1} fox(es)`
+    , 'There is 1 fox'
+    , 'pick the simplified singular forms'
     );
 });
 
@@ -137,27 +122,27 @@ test('time: format dates within a string', t => {
   t.is
     ( time`Last login on ${new Date('2020-01-09')}@Y-m-d`
     , "Last login on 2020-01-09"
+    , 'support formatting characters Ymd'
     );
 
   t.is
     ( time`Last login on ${new Date('2020-01-09')}@j/n/y`
     , "Last login on 9/1/20"
+    , 'suport formatting characters jny'
     )
 
   t.is
     ( time`Last login on ${0/0}@j/n/y`
     , "Last login on NaN"
+    , 'remove date format when date is not valid'
     )
 });
 
 test('trim: trim all values', t => {
   t.plan(1);
 
-  const foo = ' f oo ';
-  const bar = ' b ar ';
-
   t.is
-    ( trim`foo=${foo} , bar=${bar} `
+    ( trim`foo=${' f oo '} , bar=${' b ar '} `
     , "foo=f oo , bar=b ar "
     );
 });
@@ -165,11 +150,8 @@ test('trim: trim all values', t => {
 test('upper: uppercase all values', t => {
   t.plan(1);
 
-  const foo = 'foo';
-  const bar = 'bar';
-
   t.is
-    ( upper`foo=${foo}, bar=${bar}`
+    ( upper`foo=${'foo'}, bar=${'bar'}`
     , "foo=FOO, bar=BAR"
     );
 });
@@ -177,14 +159,8 @@ test('upper: uppercase all values', t => {
 test('lower: lowercase all values', t => {
   t.plan(1);
 
-  const food =
-    [ 'BREAD'
-    , 'BEANS'
-    , 'COVFEFE'
-    ];
-
   t.is
-    ( lower`I had ${food[0]}, ${food[1]} and ${food[2]} for breakfast`
+    ( lower`I had ${'BREAD'}, ${'BEANS'} and ${'COVFEFE'} for breakfast`
     , 'I had bread, beans and covfefe for breakfast'
     );
 });
