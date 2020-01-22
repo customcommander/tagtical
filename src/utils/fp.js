@@ -49,6 +49,16 @@ const constant =
       x;
 
 /**
+ * Takes an `a` and returns a function that takes a `b`
+ * and returns `b` if truthy otherwise `a`.
+ *
+ * Example:
+ *
+ * ```javascript
+ * ['', 'a', ''].map(fallback('42'))
+ * //=> ['42', 'a', '42']
+ * ```
+ *
  * @param {?} a
  * @return {function(?): ?}
  */
