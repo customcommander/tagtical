@@ -76,6 +76,18 @@ const head =
     xs[0];
 
 /**
+ * Takes a function `fn` and returns a function that takes a list `xs`
+ * and returns a new list where each element of the list has been
+ * applied to `fn`.
+ *
+ * Example:
+ * 
+ * ```javascript
+ * const set_default_answer = map(fallback('42'));
+ * set_default_answer(['', 'a', ''])
+ * //=> ['42', 'a', '42']
+ * ```
+ *
  * @param {function} fn
  * @return {function(Array): Array}
  */
