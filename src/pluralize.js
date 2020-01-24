@@ -71,24 +71,16 @@ const get_plural_form = str =>
  * ```javascript
  * import {pluralize} from '@customcommander/tagtical';
  *
- * let num;
- *
- * num = 10;
- * pluralize`There is/are ${num} fox(es)`
+ * pluralize`There is/are ${10} fox(es)`
  * //=> "There are 10 foxes"
  *
- * num = 0;
- * pluralize`There is/are ${num} fox(es)`
+ * pluralize`There is/are ${0} fox(es)`
  * //=> "There are 0 foxes"
  *
- * num = 1;
- * pluralize`There is/are ${num} fox(es)`
+ * pluralize`There is/are ${1} fox(es)`
  * //=> "There is 1 fox"
  *
- * // or
- *
- * num = 1;
- * pluralize`There is/are ${num} fox/foxes`
+ * pluralize`There is/are ${1} fox/foxes`
  * //=> "There is 1 fox"
  * ```
  *

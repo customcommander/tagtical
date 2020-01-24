@@ -32,8 +32,7 @@ const tag_function = require('./utils/tag-function');
  * ```javascript
  * import {trim} from '@customcommander/tagtical';
  *
- * const name = '   John    ';
- * trim`My name is ${name}!`;
+ * trim`My name is ${'   John    '}!`;
  * //=> "My name is John!"
  * ```
  */

@@ -22,17 +22,15 @@ Here's a typical implementation:
 
 Simple enough yet already difficult to parse and the intent is obfuscated.
 
-Can we do better? How about this?
+Perhaps this reads better?
 
 ```javascript
 import {pluralize} from '@customcommander/tagtical';
 
-let n = 1;
-pluralize`There is/are ${n} fox(es)`;
+pluralize`There is/are ${1} fox(es)`;
 //=> "There is 1 fox"
 
-n = 10;
-pluralize`There is/are ${n} fox(es)`;
+pluralize`There is/are ${10} fox(es)`;
 //=> "There are 10 foxes"
 ```
 
@@ -45,10 +43,7 @@ If an interpolated value is not of the expected type, it is returned as is. This
 ```javascript
 import {lower} from '@customcommander/tagtical';
 
-const num = 1;
-const food = 'BURRITO';
-
-lower`I only had ${num} ${food}!`;
+lower`I only had ${1} ${'BURRITO'}!`;
 //=> "I only had 1 burrito!"
 
 ```
@@ -87,14 +82,10 @@ is removed from the string.
 ```javascript
 import {defaults} from '@customcommander/tagtical';
 
-var username = '';
-var num;
-defaults`Hi ${username}/guest, you have ${num}/no new emails`;
+defaults`Hi ${''}/guest, you have ${undefined}/no new emails`;
 //=> "Hi guest, you have no new emails"
 
-var username = 'John';
-var num = 10;
-defaults`Hi ${username}/guest, you have ${num}/no new emails`;
+defaults`Hi ${'John'}/guest, you have ${10}/no new emails`;
 //=> "Hi John, you have 10 new emails"
 ```
 
@@ -150,13 +141,7 @@ Non-string values are left as is.
 ```javascript
 import {lower} from '@customcommander/tagtical';
 
-const food =
- [ 'BREAD'
- , 'BEANS'
- , 'COVFEFE'
- ];
-
-lower`I had ${food[0]}, ${food[1]} and ${food[2]} for breakfast`
+lower`I had ${'BREAD'}, ${'BEANS'} and ${'COVFEFE'} for breakfast`
 //=> "I had bread, beans and covfefe for breakfast"
 ```
 
@@ -184,24 +169,16 @@ an abbreviated notation can also be used: `fox(es)`.
 ```javascript
 import {pluralize} from '@customcommander/tagtical';
 
-let num;
-
-num = 10;
-pluralize`There is/are ${num} fox(es)`
+pluralize`There is/are ${10} fox(es)`
 //=> "There are 10 foxes"
 
-num = 0;
-pluralize`There is/are ${num} fox(es)`
+pluralize`There is/are ${0} fox(es)`
 //=> "There are 0 foxes"
 
-num = 1;
-pluralize`There is/are ${num} fox(es)`
+pluralize`There is/are ${1} fox(es)`
 //=> "There is 1 fox"
 
-// or
-
-num = 1;
-pluralize`There is/are ${num} fox/foxes`
+pluralize`There is/are ${1} fox/foxes`
 //=> "There is 1 fox"
 ```
 
@@ -222,7 +199,7 @@ The `time` tag formats all interpolated dates according to a given format.
 ```javascript
 import {time} from '@customcommander/tagtical';
 
-time`Last login on ${date}@Y-m-d`;
+time`Last login on ${new Date()}@Y-m-d`;
 //=> "Last login on 2020-01-09"
 ```
 
@@ -265,8 +242,7 @@ Non-string values are left as is.
 ```javascript
 import {trim} from '@customcommander/tagtical';
 
-const name = '   John    ';
-trim`My name is ${name}!`;
+trim`My name is ${'   John    '}!`;
 //=> "My name is John!"
 ```
 
@@ -283,9 +259,7 @@ Non-string values are left as is.
 ```javascript
 import {upper} from '@customcommander/tagtical';
 
-const name = 'john';
-const age = 40;
-upper`My name is ${name} and I am ${age} years old`
+upper`My name is ${'john'} and I am ${40} years old`
 //=> "My name is JOHN and I am 40 years old"
 ```
 

@@ -32,13 +32,7 @@ const tag_function = require('./utils/tag-function');
  * ```javascript
  * import {lower} from '@customcommander/tagtical';
  *
- * const food =
- *  [ 'BREAD'
- *  , 'BEANS'
- *  , 'COVFEFE'
- *  ];
- *
- * lower`I had ${food[0]}, ${food[1]} and ${food[2]} for breakfast`
+ * lower`I had ${'BREAD'}, ${'BEANS'} and ${'COVFEFE'} for breakfast`
  * //=> "I had bread, beans and covfefe for breakfast"
  * ```
  */
