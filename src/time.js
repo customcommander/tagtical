@@ -119,7 +119,7 @@ const format =
  * ```javascript
  * import {time} from '@customcommander/tagtical';
  * 
- * time`Last login on ${date}@Y-m-d`;
+ * time`Last login on ${new Date()}@Y-m-d`;
  * //=> "Last login on 2020-01-09"
  * ```
  *

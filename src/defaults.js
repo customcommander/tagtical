@@ -76,14 +76,10 @@ const remove_default = str =>
  * ```javascript
  * import {defaults} from '@customcommander/tagtical';
  *
- * var username = '';
- * var num;
- * defaults`Hi ${username}/guest, you have ${num}/no new emails`;
+ * defaults`Hi ${''}/guest, you have ${undefined}/no new emails`;
  * //=> "Hi guest, you have no new emails"
  *
- * var username = 'John';
- * var num = 10;
- * defaults`Hi ${username}/guest, you have ${num}/no new emails`;
+ * defaults`Hi ${'John'}/guest, you have ${10}/no new emails`;
  * //=> "Hi John, you have 10 new emails"
  * ```
  */

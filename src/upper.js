@@ -32,9 +32,7 @@ const tag_function = require('./utils/tag-function');
  * ```javascript
  * import {upper} from '@customcommander/tagtical';
  *
- * const name = 'john';
- * const age = 40;
- * upper`My name is ${name} and I am ${age} years old`
+ * upper`My name is ${'john'} and I am ${40} years old`
  * //=> "My name is JOHN and I am 40 years old"
  * ```
  */

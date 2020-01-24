@@ -22,17 +22,15 @@ Here's a typical implementation:
 
 Simple enough yet already difficult to parse and the intent is obfuscated.
 
-Can we do better? How about this?
+Perhaps this reads better?
 
 ```javascript
 import {pluralize} from '@customcommander/tagtical';
 
-let n = 1;
-pluralize`There is/are ${n} fox(es)`;
+pluralize`There is/are ${1} fox(es)`;
 //=> "There is 1 fox"
 
-n = 10;
-pluralize`There is/are ${n} fox(es)`;
+pluralize`There is/are ${10} fox(es)`;
 //=> "There are 10 foxes"
 ```
 
@@ -45,10 +43,7 @@ If an interpolated value is not of the expected type, it is returned as is. This
 ```javascript
 import {lower} from '@customcommander/tagtical';
 
-const num = 1;
-const food = 'BURRITO';
-
-lower`I only had ${num} ${food}!`;
+lower`I only had ${1} ${'BURRITO'}!`;
 //=> "I only had 1 burrito!"
 
 ```
