@@ -209,7 +209,7 @@ The `@` sign links a date with a format and the format is made of formatting cha
 as seen in [PHP's date function](https://www.php.net/manual/en/function.date.php).
 The format is removed from the string after processing.
 
-Only a subset of these options is supported at the moment:
+Only a subset of these options is supported at the moment and English is the only supported locale.
 
 | Character | Description                                     |
 |:----------|:------------------------------------------------|
@@ -219,6 +219,8 @@ Only a subset of these options is supported at the moment:
 | n         | Month. No leading zeros. e.g. "1"               |
 | d         | Day. Two digits; leading zeros. e.g. "01"       |
 | j         | Day. No leading zeros. e.g. "1"                 |
+| l         | Day of the week e.g. "Monday"                   |
+| D         | Day of the week, short e.g. "Mon"               |
 
 Anything that isn't a formatting character is rendered as is.
 

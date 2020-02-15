@@ -138,7 +138,7 @@ test('pluralize: choose between singular or plural forms', t => {
 });
 
 test('time: format dates within a string', t => {
-  t.plan(3);
+  t.plan(5);
 
   t.is
     ( time`Last login on ${new Date('2020-01-09')}@Y-m-d`
@@ -156,6 +156,18 @@ test('time: format dates within a string', t => {
     ( time`Last login on ${0/0}@j/n/y`
     , "Last login on NaN"
     , 'remove date format when date is not valid'
+    )
+
+  t.is
+    ( time`Last login on ${new Date('2020-02-16')}@l`
+    , 'Last login on Sunday'
+    , 'Support formatting character `l` (day of the week)'
+    )
+
+  t.is
+    ( time`Last login on ${new Date('2020-02-16')}@D`
+    , 'Last login on Sun'
+    , 'Support formatting character `D` (day of the week, short)'
     )
 });
 

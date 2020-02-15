@@ -1,0 +1,45 @@
+{ "days":
+    [ { "en": "Monday"
+      }
+      ,
+      { "en": "Tuesday"
+      }
+      ,
+      { "en": "Wednesday"
+      }
+      ,
+      { "en": "Thursday"
+      }
+      ,
+      { "en": "Friday"
+      }
+      ,
+      { "en": "Saturday"
+      }
+      ,
+      { "en": "Sunday"
+      }
+    ]
+, "days_short":
+    [ { "en": "Mon"
+      }
+      ,
+      { "en": "Tue"
+      }
+      ,
+      { "en": "Wed"
+      }
+      ,
+      { "en": "Thu"
+      }
+      ,
+      { "en": "Fri"
+      }
+      ,
+      { "en": "Sat"
+      }
+      ,
+      { "en": "Sun"
+      }
+    ]
+}
