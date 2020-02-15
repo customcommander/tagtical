@@ -1,0 +1,40 @@
+{
+  "$id": "l10n-data",
+  "defs": {
+    "l10n-str": {
+      "type": "string",
+      "minLength": "1"
+    },
+    "l10n-obj": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "en"
+      ],
+      "properties": {
+        "en": {
+          "$ref": "l10n-data#/defs/l10n-str"
+        }
+      }
+    }
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "days",
+    "days_short"
+  ],
+  "properties": {
+    "days": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "items": {
+        "$ref": "l10n-data#/defs/l10n-obj"
+      }
+    },
+    "days_short": {
+      "$ref": "l10n-data#/properties/days"
+    }
+  }
+}
