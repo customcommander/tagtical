@@ -200,7 +200,7 @@ test('lower: lowercase all values', t => {
 });
 
 test('list: returns a textual representation of a list', t => {
-  t.plan(6);
+  t.plan(7);
 
   t.is
     ( list`${[]}`
@@ -236,5 +236,11 @@ test('list: returns a textual representation of a list', t => {
     ( list({delim: '; ', delimlast: ' & '})`${['foo', 'bar', 'baz']}`
     , 'foo; bar & baz'
     , '`delim` and `delimlast` can be changed'
+    );
+
+  t.is
+    ( list`${{}}`
+    , String({})
+    , 'Return non-array values as is'
     );
 });
