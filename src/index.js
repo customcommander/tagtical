@@ -3,6 +3,7 @@ const use_tag = require('./utils/use-tag');
 const intersperse = require('./utils/intersperse');
 const defaults = require('./defaults');
 const hide = require('./hide');
+const list = require('./list');
 const lower = require('./lower');
 const pluralize = require('./pluralize');
 const time = require('./time');
@@ -20,6 +21,7 @@ const tag = (...fns) =>
       (intersperse(strs, vals));
 
 tag.defaults = use_tag(defaults);
+tag.list = use_tag(list);
 tag.hide = use_tag(hide);
 tag.lower = use_tag(lower);
 tag.pluralize = use_tag(pluralize);

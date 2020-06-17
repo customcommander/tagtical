@@ -52,6 +52,7 @@ lower`I only had ${1} ${'BURRITO'}!`;
 
 * [defaults](#defaults) - _Replace an empty value with a default value_
 * [hide](#hide) - _Hides interpolated values_
+* [list](#list) - _Textual representation of an array_
 * [lower](#lower) - _Lowercase interpolated values_
 * [pluralize](#pluralize) - _Choose between singular or plural forms._
 * [time](#time) - _Format dates within a string._
@@ -129,6 +130,42 @@ Options:
 
    hide({fill: true})`Your name is ${'John'} and you live in ${'Manchester'}`;
    //=> "Your name is xxxx and you live in xxxxxxxxxx"
+   ```
+
+
+### list
+
+
+All items in the list are joined with `', '` expected for the last two items
+which are joined with `' and '`.
+
+```javascript
+import {list} from '@customcommander/tagtical';
+
+const arr = ['Huey', 'Dewey', 'Louie'];
+list`Hey ${arr}!`;
+//=> "Hey Huey, Dewey and Louie!"
+```
+
+Options:
+
+* __delim__ (default `', '`)
+
+  The string to use to join all items expect the last.
+
+   ```javascript
+   const arr = ['Huey', 'Dewey', 'Louie'];
+   list({delim: '; '})`Hey ${arr}!`;
+   //=> "Hey Huey; Dewey and Louie!"
+   ```
+* __delimlast__ (default `' and '`)
+
+  The string to use to join the last two items.
+
+   ```javascript
+   const arr = ['Huey', 'Dewey', 'Louie'];
+   list({delimlast: ' & '})`Hey ${arr}!`;
+   //=> "Hey Huey, Dewey & Louie!"
    ```
 
 
