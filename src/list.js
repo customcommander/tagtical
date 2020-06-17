@@ -67,8 +67,8 @@ const join = ({delim, delimlast}, arr) =>
 /**
  * Textual representation of an array
  *
- * All items in the list are joined with `', '` expected for the last two items
- * which are joined with `' and '`.
+ * All items in the list are joined with `', '` except for the last two items
+ * that are joined with `' and '`.
  *
  * ```javascript
  * import {list} from '@customcommander/tagtical';
