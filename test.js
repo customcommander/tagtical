@@ -3,6 +3,7 @@ const tag = require('./dist');
 const
   { defaults
   , hide
+  , list
   , lower
   , pluralize
   , time
@@ -195,5 +196,45 @@ test('lower: lowercase all values', t => {
   t.is
     ( lower`I had ${'BREAD'}, ${'BEANS'} and ${'COVFEFE'} for breakfast`
     , 'I had bread, beans and covfefe for breakfast'
+    );
+});
+
+test('list: returns a textual representation of a list', t => {
+  t.plan(6);
+
+  t.is
+    ( list`${[]}`
+    , ''
+    , 'An empty array returns an empty string'
+    );
+
+  t.is
+    ( list`${['foo']}`
+    , 'foo'
+    , 'A single-item array simply returns that item'
+    );
+
+  t.is
+    ( list`${['foo', 'bar']}`
+    , 'foo and bar'
+    , 'A pair is joined with the default `delimlast` option'
+    );
+
+  t.is
+    ( list`${['foo', 'bar', 'baz']}`
+    , 'foo, bar and baz'
+    , 'Items are joined with the default `delim` and `delimlast` options'
+    );
+
+  t.is
+    ( list({delim: 4, delimlast: 5})`${['foo', 'bar', 'baz']}`
+    , 'foo, bar and baz'
+    , '`delim` and `delimlast` must be string'
+    );
+
+  t.is
+    ( list({delim: '; ', delimlast: ' & '})`${['foo', 'bar', 'baz']}`
+    , 'foo; bar & baz'
+    , '`delim` and `delimlast` can be changed'
     );
 });
