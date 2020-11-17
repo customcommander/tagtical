@@ -1,3 +1,8 @@
+/**
+ * @license MIT
+ * @copyright (c) 2020 Julien Gonzalez <hello@spinjs.com>
+ */
+
 const {compose, join} = require('./fp');
 const intersperse = require('./intersperse');
 const transform = require('./transform');
