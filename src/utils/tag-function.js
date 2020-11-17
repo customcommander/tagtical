@@ -1,4 +1,9 @@
 /**
+ * @license MIT
+ * @copyright (c) 2020 Julien Gonzalez <hello@spinjs.com>
+ */
+
+/**
  * @param {TagFunction} fn
  * @param {TagOptions} opts
  * @return {TagFunction|TagConfigFunction}

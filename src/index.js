@@ -1,3 +1,8 @@
+/**
+ * @license MIT
+ * @copyright (c) 2020 Julien Gonzalez <hello@spinjs.com>
+ */
+
 const tag_function = require('./utils/tag-function');
 const use_tag = require('./utils/use-tag');
 const intersperse = require('./utils/intersperse');

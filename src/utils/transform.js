@@ -1,3 +1,8 @@
+/**
+ * @license MIT
+ * @copyright (c) 2020 Julien Gonzalez <hello@spinjs.com>
+ */
+
 const {cont} = require('./fp');
 
 const transformer = (fn, xs, i=1) =>

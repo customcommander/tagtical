@@ -1,3 +1,8 @@
+/**
+ * @license MIT
+ * @copyright (c) 2020 Julien Gonzalez <hello@spinjs.com>
+ */
+
 const data = require('./l10n-data.json');
 
 /**
