@@ -5,7 +5,7 @@
 
 /**
  * @param {TagFunction} fn
- * @param {TagOptions} opts
+ * @param {!TagOptions=} opts
  * @return {TagFunction|TagConfigFunction}
  */
 module.exports =
