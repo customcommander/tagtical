@@ -3,6 +3,7 @@
  * @copyright (c) 2021 Julien Gonzalez <hello@spinjs.com>
  */
 
+const tag_function = require('./utils/tag-function');
 const RE = /^(\s*)(\/)([a-zA-Z0-9]+)(\s*)/;
 
 const is_empty = x =>
@@ -66,12 +67,13 @@ const remove_default = str =>
  * ```
  */
 module.exports =
-  (l, x, r) =>
-    [ l
-    , is_empty(x)
-        ? ''
-        : x
-    , is_empty(x)
-        ? get_default(r)
-        : remove_default(r)
-    ];
+  tag_function
+    ( (l, x, r) =>
+        [ l
+        , is_empty(x)
+            ? ''
+            : x
+        , is_empty(x)
+            ? get_default(r)
+            : remove_default(r)
+        ]);
