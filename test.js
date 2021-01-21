@@ -1,5 +1,4 @@
 const test = require('tape');
-const tag = require('./dist');
 const
   { defaults
   , hide
@@ -10,15 +9,6 @@ const
   , trim
   , upper
   } = require('./dist');
-
-test('tag: can compose other tags', t => {
-  t.plan(1);
-
-  t.is
-    ( tag(upper, trim)`foo=${'  foo  '}, bar=${'  bar  '}`
-    , "foo=FOO, bar=BAR"
-    );
-});
 
 test('defaults: replace empty values', t => {
   t.plan(2);
@@ -33,43 +23,6 @@ test('defaults: replace empty values', t => {
     ( defaults`foo=${false}/aaa, bar=${0}/bbb`
     , 'foo=false, bar=bbb'
     , 'false is not an empty value but 0 is'
-    );
-});
-
-test('tag: can compose user-defined tags', t => {
-  t.plan(1);
-
-  const myTag =
-    tag.of(
-      (l, x, r) =>
-        [ '|'
-        , x
-        , '|'
-        ]);
-
-  t.is
-    ( tag(upper, myTag, trim)`foo=${'  foo  '}, bar=${'  bar  '}`
-    , "|FOO|BAR|"
-    );
-});
-
-test('user-defined tags can receive options', t => {
-  t.plan(1);
-
-  const myTag =
-    tag.of
-      ( (l, x, r, {foo}) =>
-          [ l
-          , foo
-          , r
-          ]
-      , { foo: 'fooooooo'
-        }
-      );
-
-  t.is
-    ( myTag({foo: 'baaar'})`Hello ${'world'}!`
-    , 'Hello baaar!'
     );
 });
 
