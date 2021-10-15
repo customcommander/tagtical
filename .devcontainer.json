@@ -1,6 +1,6 @@
 {
   "name": "tagtical",
-  "image": "customcommander/tagtical",
+  "image": "customcommander/webdev:3.1",
   "postCreateCommand": [
     "yarn"
   ]

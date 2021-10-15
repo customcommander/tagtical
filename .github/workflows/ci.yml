@@ -9,8 +9,14 @@ jobs:
   test:
     name: unit tests
     runs-on: ubuntu-latest
+    container:
+      image: customcommander/webdev:3.1
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout
+        uses: actions/checkout@v1
         with:
           fetch-depth: 1
-      - run: docker run --rm --mount type=bind,src=$GITHUB_WORKSPACE,dst=/workspaces/tagtical customcommander/tagtical sh -c 'yarn && yarn test'
+      - name: Setup
+        run: yarn
+      - name: Test
+        run: yarn test

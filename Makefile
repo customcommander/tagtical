@@ -8,7 +8,7 @@ dist: $(DIST_FILES) dist/utils/l10n-data.json
 
 dist/%.js: src/%.js
 	mkdir -p $(@D)
-	java -jar /workspaces/closure-compiler/compiler.jar \
+	java -jar /devtools/closure-compiler/compiler.jar \
 		--compilation_level=SIMPLE_OPTIMIZATIONS \
 		--language_in=ECMASCRIPT_2018 \
 		--language_out=ECMASCRIPT_2015 \

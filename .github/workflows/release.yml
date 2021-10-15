@@ -9,9 +9,17 @@ jobs:
   publish:
     name: publish
     runs-on: ubuntu-latest
+    container:
+      image: customcommander/webdev:3.1
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
     steps:
-      - uses: actions/checkout@v1
-      - run: docker run -e NPM_TOKEN -e GH_TOKEN --rm --mount type=bind,src=$GITHUB_WORKSPACE,dst=/workspaces/tagtical customcommander/tagtical sh -c 'yarn && make dist && yarn semantic-release --no-ci'
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Setup
+        run: yarn
+      - name: Build
+        run: make dist
+      - name: Release
+        run: yarn semantic-release --no-ci
