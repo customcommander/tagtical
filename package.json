@@ -20,7 +20,7 @@
     "doc": "make README.md"
   },
   "devDependencies": {
-    "ajv": "^6.11.0",
+    "ajv": "^8.6.3",
     "jsdoc": "^3.6.3",
     "mustache": "^3.2.0",
     "semantic-release": "^17.2.3",
