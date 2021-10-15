@@ -20,6 +20,8 @@
     "doc": "make README.md"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.0",
+    "@semantic-release/git": "^10.0.0",
     "ajv": "^8.6.3",
     "jsdoc": "^3.6.7",
     "mustache": "^4.2.0",
