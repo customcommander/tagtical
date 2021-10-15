@@ -22,7 +22,7 @@
   "devDependencies": {
     "ajv": "^8.6.3",
     "jsdoc": "^3.6.7",
-    "mustache": "^3.2.0",
+    "mustache": "^4.2.0",
     "semantic-release": "^17.2.3",
     "tape": "^4.12.0"
   }
