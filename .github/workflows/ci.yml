@@ -13,9 +13,7 @@ jobs:
       image: customcommander/webdev:3.1
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
-        with:
-          fetch-depth: 1
+        uses: actions/checkout@v2
       - name: Setup
         run: yarn
       - name: Test
