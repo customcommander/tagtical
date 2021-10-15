@@ -11,9 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: customcommander/webdev:3.1
-      env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -23,3 +20,6 @@ jobs:
         run: make dist
       - name: Release
         run: yarn semantic-release --no-ci
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
