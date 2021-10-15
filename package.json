@@ -23,7 +23,7 @@
     "ajv": "^8.6.3",
     "jsdoc": "^3.6.7",
     "mustache": "^4.2.0",
-    "semantic-release": "^17.2.3",
+    "semantic-release": "^18.0.0",
     "tape": "^5.3.1"
   }
 }
